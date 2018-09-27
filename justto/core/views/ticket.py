@@ -12,14 +12,22 @@ class TicketView:
 
 
 class TicketListCreateView(TicketView, ListCreateAPIView):
-
-    @method_decorator(cache_page(60))
-    def dispatch(self, request, *args, **kwargs):
-        return super(TicketListCreateView, self).dispatch(request, *args, **kwargs)
+    pass
 
 
 class TicketRetrieveUpdateDestroyView(TicketView, RetrieveUpdateDestroyAPIView):
+    pass
+
+
+class TicketListCreateViewAsMemCached(TicketView, ListCreateAPIView):
 
     @method_decorator(cache_page(60))
     def dispatch(self, request, *args, **kwargs):
-        return super(TicketRetrieveUpdateDestroyView, self).dispatch(request, *args, **kwargs)
+        return super(TicketListCreateViewAsMemCached, self).dispatch(request, *args, **kwargs)
+
+
+class TicketRetrieveUpdateDestroyViewAsMemCached(TicketView, RetrieveUpdateDestroyAPIView):
+
+    @method_decorator(cache_page(60))
+    def dispatch(self, request, *args, **kwargs):
+        return super(TicketRetrieveUpdateDestroyViewAsMemCached, self).dispatch(request, *args, **kwargs)

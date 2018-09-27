@@ -12,14 +12,22 @@ class UserView:
 
 
 class UserListCreateView(UserView, ListCreateAPIView):
-
-    @method_decorator(cache_page(60))
-    def dispatch(self, request, *args, **kwargs):
-        return super(UserListCreateView, self).dispatch(request, *args, **kwargs)
+    pass
 
 
 class UserRetrieveUpdateDestroyView(UserView, RetrieveUpdateDestroyAPIView):
+    pass
+
+
+class UserListCreateViewAsMemcached(UserView, ListCreateAPIView):
 
     @method_decorator(cache_page(60))
     def dispatch(self, request, *args, **kwargs):
-        return super(UserRetrieveUpdateDestroyView, self).dispatch(request, *args, **kwargs)
+        return super(UserListCreateViewAsMemcached, self).dispatch(request, *args, **kwargs)
+
+
+class UserRetrieveUpdateDestroyViewAsMemcached(UserView, RetrieveUpdateDestroyAPIView):
+
+    @method_decorator(cache_page(60))
+    def dispatch(self, request, *args, **kwargs):
+        return super(UserRetrieveUpdateDestroyViewAsMemcached, self).dispatch(request, *args, **kwargs)
