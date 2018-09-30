@@ -21,13 +21,27 @@ class UserRetrieveUpdateDestroyView(UserView, RetrieveUpdateDestroyAPIView):
 
 class UserListCreateViewAsMemcached(UserView, ListCreateAPIView):
 
-    @method_decorator(cache_page(60))
+    @method_decorator(cache_page(60, cache='default'))
     def dispatch(self, request, *args, **kwargs):
         return super(UserListCreateViewAsMemcached, self).dispatch(request, *args, **kwargs)
 
 
 class UserRetrieveUpdateDestroyViewAsMemcached(UserView, RetrieveUpdateDestroyAPIView):
 
-    @method_decorator(cache_page(60))
+    @method_decorator(cache_page(60, cache='default'))
     def dispatch(self, request, *args, **kwargs):
         return super(UserRetrieveUpdateDestroyViewAsMemcached, self).dispatch(request, *args, **kwargs)
+
+
+class UserListCreateViewAsRedis(UserView, ListCreateAPIView):
+
+    @method_decorator(cache_page(60, cache='default'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(UserListCreateViewAsRedis, self).dispatch(request, *args, **kwargs)
+
+
+class UserRetrieveUpdateDestroyViewAsRedis(UserView, RetrieveUpdateDestroyAPIView):
+
+    @method_decorator(cache_page(60, cache='default'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(UserRetrieveUpdateDestroyViewAsRedis, self).dispatch(request, *args, **kwargs)

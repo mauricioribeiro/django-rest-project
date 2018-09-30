@@ -106,6 +106,14 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
         'TIMEOUT': 60,  # Default: 300seg,
         'KEY_PREFIX': 'justtocorecache',
+    },
+    'redis': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
+        },
+        'KEY_PREFIX': 'justtocoreredis'
     }
 }
 
@@ -168,7 +176,7 @@ REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
     'UNICODE_JSON': False,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 1000
+    'PAGE_SIZE': 20
 }
 
 # Internationalization

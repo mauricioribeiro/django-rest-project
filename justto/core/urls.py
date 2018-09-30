@@ -11,9 +11,13 @@ urlpatterns = [
     url(r'^tickets/(?P<pk>[0-9]+)[\/]?$', TicketRetrieveUpdateDestroyView.as_view(), name='ticket-retrieve-update-destroy'),
     url(r'^tickets/memcached[\/]?$', TicketListCreateViewAsMemCached.as_view(), name='ticket-list-create-memcached'),
     url(r'^tickets/memcached/(?P<pk>[0-9]+)[\/]?$', TicketRetrieveUpdateDestroyViewAsMemCached.as_view(), name='ticket-retrieve-update-destroy-memcached'),
+    url(r'^tickets/redis[\/]?$', TicketListCreateViewAsRedis.as_view(), name='ticket-list-create-redis'),
+    url(r'^tickets/redis/(?P<pk>[0-9]+)[\/]?$', TicketRetrieveUpdateDestroyViewAsRedis.as_view(), name='ticket-retrieve-update-destroy-redis'),
 
     url(r'^users[\/]?$', UserListCreateView.as_view(), name='user-list-create'),
     url(r'^users/(?P<pk>[0-9]+)[\/]?$', UserRetrieveUpdateDestroyView.as_view(), name='user-retrieve-update-destroy'),
     url(r'^users/memcached[\/]?$', UserListCreateViewAsMemcached.as_view(), name='user-list-create-memcached'),
     url(r'^users/memcached/(?P<pk>[0-9]+)[\/]?$', UserRetrieveUpdateDestroyViewAsMemcached.as_view(), name='user-retrieve-update-destroy-memcached'),
+    url(r'^users/redis[\/]?$', UserListCreateViewAsRedis.as_view(), name='user-list-create-redis'),
+    url(r'^users/redis/(?P<pk>[0-9]+)[\/]?$', UserRetrieveUpdateDestroyViewAsRedis.as_view(), name='user-retrieve-update-destroy-redis'),
 ]

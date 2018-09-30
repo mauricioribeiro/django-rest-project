@@ -21,13 +21,27 @@ class TicketRetrieveUpdateDestroyView(TicketView, RetrieveUpdateDestroyAPIView):
 
 class TicketListCreateViewAsMemCached(TicketView, ListCreateAPIView):
 
-    @method_decorator(cache_page(60))
+    @method_decorator(cache_page(60, cache='default'))
     def dispatch(self, request, *args, **kwargs):
         return super(TicketListCreateViewAsMemCached, self).dispatch(request, *args, **kwargs)
 
 
 class TicketRetrieveUpdateDestroyViewAsMemCached(TicketView, RetrieveUpdateDestroyAPIView):
 
-    @method_decorator(cache_page(60))
+    @method_decorator(cache_page(60, cache='default'))
     def dispatch(self, request, *args, **kwargs):
         return super(TicketRetrieveUpdateDestroyViewAsMemCached, self).dispatch(request, *args, **kwargs)
+
+
+class TicketListCreateViewAsRedis(TicketView, ListCreateAPIView):
+
+    @method_decorator(cache_page(60, cache='default'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(TicketListCreateViewAsRedis, self).dispatch(request, *args, **kwargs)
+
+
+class TicketRetrieveUpdateDestroyViewAsRedis(TicketView, RetrieveUpdateDestroyAPIView):
+
+    @method_decorator(cache_page(60, cache='default'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(TicketRetrieveUpdateDestroyViewAsRedis, self).dispatch(request, *args, **kwargs)
